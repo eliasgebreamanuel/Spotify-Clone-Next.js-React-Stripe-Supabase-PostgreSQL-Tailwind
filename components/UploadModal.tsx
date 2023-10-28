@@ -64,11 +64,12 @@ const UploadModal = () => {
         .storage
         .from('songs')
         .upload(`song-${values.title}-${uniqueID}`, songFile, {
-          cacheControl: '10000',
+          cacheControl: '3600',
           upsert: false
         });
 
       if (songError) {
+        console.error('An error occurred:', songError);
         setIsLoading(false);
         return toast.error('Failed song upload');
       }
